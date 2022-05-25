@@ -2,7 +2,7 @@
 <template>
   <nav class="nav-container">
     <ul class="nav-links">
-      <router-link class="link" :to="{name: 'Home'}"><i class="fa-solid fa-house icon"></i>Home</router-link>
+      <router-link class="link" :to="{name: 'HomeRecipes'}"><i class="fa-solid fa-house icon"></i>Home</router-link>
       <router-link class="link" :to="{name: 'Recipes'}"><i class="fa-solid fa-list icon"></i>Recipes</router-link>
       <router-link class="link" :to="{name: 'Shopping'}"><i class="fa-solid fa-cart-shopping icon"></i>Shopping</router-link>
       <router-link class="link" :to="{name: 'Profile'}"><i class="fa-solid fa-user icon"></i>Profile</router-link>
@@ -23,7 +23,8 @@ export default {
   .nav-container{
     //padding: 0 1rem;
     width: 100%;
-    position: fixed;
+    position: sticky;
+    background: #fff;
     bottom: 0;
     left: 0;
     box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.08);

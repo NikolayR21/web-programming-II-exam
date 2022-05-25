@@ -20,9 +20,10 @@ export default {
     padding: 1rem 0;
     width: 100%;
     position: sticky;
+    background: #fff;
     top: 0;
     left: 0;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Recipes from '../views/Recipes.vue'
 import Shopping from '../views/Shopping.vue'
 import Profile from '../views/Profile.vue'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
 import HomeRecipes from '../views/HomeRecipes.vue'
 import HomeVideos from '../views/HomeVideos.vue'
 
@@ -11,12 +13,12 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
+    path: '/',
+    //name: 'Home',
     component: Home,
     children: [
       {
-        path: 'recipes',
+        path: '',
         name: 'HomeRecipes',
         component: HomeRecipes,
         meta: {
@@ -59,7 +61,25 @@ const routes = [
     meta: {
       title: 'Profile'
     }
-  }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: {
+      title: 'Login'
+    }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    meta: {
+      title: 'Register'
+    }
+  },
+
+
 ]
 
 const router = new VueRouter({

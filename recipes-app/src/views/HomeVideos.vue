@@ -1,5 +1,7 @@
 <template>
-  <div>Videos</div>
+  <div class="container">
+    <h2>Yesterday’s Most Viewed</h2>
+  </div>
 </template>
 
 <script>

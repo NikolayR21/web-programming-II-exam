@@ -1,16 +1,15 @@
 <!-- eslint-disable -->
 <template>
-  <div class="container">Recipes</div>
+  <div></div>
 </template>
 
 <script>
 /* eslint-disable */
 export default {
-  name: 'Recipes',
-
+    name: 'RecipeCard'
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>

@@ -1,6 +1,6 @@
 <!-- eslint-disable -->
 <template>
-  <div>Shopping</div>
+  <div class="container">Shopping</div>
 </template>
 
 <script>
