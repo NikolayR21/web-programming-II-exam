@@ -20,6 +20,7 @@ export default {
     padding: 1rem 0;
     width: 100%;
     position: sticky;
+    z-index: 99;
     background: #fff;
     top: 0;
     left: 0;

@@ -5,7 +5,7 @@
       <transition name="slide">
         <router-view />
       </transition>
-      <Navigation />
+      <Navigation v-if="!navigationDisabled"/>
     </div>
   </div>
 </template>
@@ -20,6 +20,30 @@ export default {
     AppBarTop,
     Navigation,
   },
+  data(){
+    return{
+      navigationDisabled: null
+    }
+  },
+  created(){
+    this.checkRoute();
+  },
+  methods: {
+    checkRoute(){
+      if(this.$route.name === 'Login' ||
+      this.$route.name === 'Register'
+      ){
+        this.navigationDisabled = true;
+        return;
+      }
+      this.navigationDisabled = false;
+    }
+  },
+  watch: {
+    $route(){
+      this.checkRoute();
+    }
+  }
 };
 </script>
 
