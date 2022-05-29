@@ -26,4 +26,4 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './recipes-app/package-lock.json'
     - run: cd recipes-app && npm ci
-    - run: cd recipes-app && npm run build
+    # - run: cd recipes-app && npm run build
