@@ -12,3 +12,5 @@ jobs:
         username: 'NikolayR21'
         reponame: 'web-programming-II-exam'
         token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+            cd recipes-app
