@@ -29,13 +29,3 @@ jobs:
             cd recipes-app
             npm ci
             npm run build
-            cd dist
-            ln -s index.html 404.html
-            git config --global user.email "nikolay.rusev21@gmail.com"
-            git config --global user.name "NikolayR21"
-            git init
-            git add .
-            git commit -m "Commit message"
-            git push -f https://NikolalyR21:${{ inputs.token }}@github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
-      with: 
-        token: ${{ secrets.GITHUB_TOKEN }}
