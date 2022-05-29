@@ -36,6 +36,14 @@ const actions = {
             window.localStorage.setItem('token', res.data.access_token)
         })
     },
+    async getProfile({commit}){
+        commit('updateAuthenticated', true)
+        await api.user().getProfile()
+        .then((res) => {
+            commit('updateAuthenticated', true)
+            commit('updateUser', res.data)
+        })
+    },
     async logout({commit}){
         commit("updateUser", null)
         commit("updateAuthenticated", false)

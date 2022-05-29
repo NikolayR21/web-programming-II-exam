@@ -1,5 +1,6 @@
 <template>
   <div class="container form-wrap">
+      <NavigationTop />
     <form @submit.prevent="register" class="register">
       <h2>Register to Recipes</h2>
       <div class="inputs">
@@ -37,6 +38,7 @@
           <input
             type="password"
             name="password"
+            minlength="6"
             v-model="userData.password"
             placeholder="Password"
             required
@@ -47,6 +49,7 @@
           <input
             type="password"
             name="password_confirmation"
+            minlength="6"
             v-model="userData.password_confirmation"
             placeholder="Confirm password"
             required
@@ -78,8 +81,12 @@
 <script>
 /*eslint-disable*/
 //import axios from 'axios';
+import NavigationTop from '../components/NavigationTop.vue'
 export default {
   name: "Register",
+  components: {
+      NavigationTop
+  },
   data() {
     return {
       error: null,

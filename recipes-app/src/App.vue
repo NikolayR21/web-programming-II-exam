@@ -27,6 +27,10 @@ export default {
   },
   created(){
     this.checkRoute();
+    if(window.localStorage.getItem('token')){
+      if(!this.$store.state.user.user && !this.$store.state.user.authenticated)
+        this.$store.dispatch('getProfile')
+      }
   },
   methods: {
     checkRoute(){
@@ -49,6 +53,10 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+
+.overflow-hidden{
+  overflow: hidden;
+}
 
 * {
   box-sizing: border-box;
@@ -99,7 +107,7 @@ export default {
 
 .container {
   padding: 1rem;
-  min-height: 100vh;
+  min-height: calc(100vh - 7rem);
 
   & > h2 {
     font-size: 1.5rem;

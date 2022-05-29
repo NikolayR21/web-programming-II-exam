@@ -1,4 +1,7 @@
 module.exports = {
+
+  // publicPath: '/web-programming-II-exam/recipes-app/',
+
   chainWebpack: (config) => {
     const svgRule = config.module.rule("svg");
 

@@ -22,5 +22,10 @@ export default {
             login: (userObj) => axios.post(`${baseURL}/auth/login`, userObj),
             logout: () => axios.post(`${baseURL}/auth/logout`, {},config())
         };
+    },
+    user(){
+        return {
+            getProfile: () => axios.get(`${baseURL}/profile`, config())
+        };
     }
 }

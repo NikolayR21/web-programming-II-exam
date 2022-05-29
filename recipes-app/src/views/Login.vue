@@ -13,6 +13,7 @@
           <input
             type="password"
             name="password"
+            minlength="6"
             placeholder="Password"
             required
           />
@@ -76,11 +77,10 @@ export default {
 
 <style lang="scss">
 .form-wrap {
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
 
   .login-register {
     margin-top: 2rem;
@@ -128,6 +128,10 @@ export default {
 
           &:focus {
             outline: #80b700 solid 2px;
+
+            // &:invalid{
+            //   outline: red solid 2px;
+            // }
           }
         }
 

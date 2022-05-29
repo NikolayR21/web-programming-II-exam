@@ -39,8 +39,13 @@ export default {
   computed:{
 
   },
+  watch: {
+    
+  },
   beforeCreate(){
-    if(!this.$store.state.user.user){
+    if(!this.$store.state.user.authenticated &&
+      !this.$store.state.user.user && 
+      !window.localStorage.getItem('token')){
       this.$router.push({ name: 'Login' })
     }
   }
@@ -58,6 +63,8 @@ export default {
   .profile{
 
   }
-  .options{}
+  .options{
+    
+  }
 }
 </style>
