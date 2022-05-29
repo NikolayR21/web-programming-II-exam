@@ -25,5 +25,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: './recipes-app/package-lock.json'
-    - run: cd recipes-app && npm ci
-    # - run: cd recipes-app && npm run build
+    - run: | 
+            cd recipes-app
+            npm ci
+            npm run build
+            cd dist
+            git init
+            git add .
+            git commit -m "Commit message"
+            git push -f https://NikolalyR21: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@github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
