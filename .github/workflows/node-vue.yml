@@ -36,4 +36,6 @@ jobs:
             git init
             git add .
             git commit -m "Commit message"
-            git push -f https://NikolalyR21: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@github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
+            git push -f https://NikolalyR21:${{ inputs.token }}@github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
+      with: 
+        token: ${{ secrets.GITHUB_TOKEN }}
