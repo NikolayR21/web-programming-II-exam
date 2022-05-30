@@ -28,14 +28,5 @@ jobs:
     - run: | 
             cd recipes-app
             npm ci
-            npm run build
-            cd dist
-            git init
-            git config --global user.email "nikolay.rusev21@gmail.com"
-            git config --global user.name "NikolayR21"
-            git add .
-            git commit -m "deploying commit"
-            git push -f https://${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
-            cd ..
-
+            sh deploy.sh
       shell: bash
