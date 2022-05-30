@@ -28,5 +28,7 @@ jobs:
     - run: | 
             cd recipes-app
             npm ci
+            git config --global user.email "nikolay.rusev21@gmail.com"
+            git config --global user.name "NikolayR21"
             sh deploy.sh
       shell: bash
