@@ -36,4 +36,4 @@ jobs:
             git branch gh-pages
             git add .
             git commit -m 'action commit'
-            git push -f https://NikolayR21:${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/recipes-app.git master:gh-pages
+            git push -f https://NikolayR21:${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/dist.git master:gh-pages
