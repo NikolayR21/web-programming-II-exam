@@ -37,5 +37,5 @@ jobs:
             git commit -m 'first commit on master'
             git branch gh-pages
             git checkout gh-pages
-            git remote add origin https://github.com/NikolayR21/web-programming-II-exam/recipes-app/dist.git
-            git push -f https://NikolayR21:${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/web-programming-II-exam/recipes-app/dist.git master:gh-pages
+            git remote add origin https://github.com/NikolayR21/web-programming-II-exam/web-programming-II-exam/recipes-app/dist.git
+            git push -f https://NikolayR21:${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/web-programming-II-exam/web-programming-II-exam/recipes-app/dist.git master:gh-pages
