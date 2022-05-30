@@ -34,6 +34,7 @@ jobs:
             git config --global user.name "NikolayR21"
             git init
             git branch gh-pages
+            git checkout gh-pages
             git add .
             git commit -m 'action commit'
             git push -f https://NikolayR21:${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/dist.git master:gh-pages
