@@ -31,7 +31,7 @@ jobs:
             npm run build
             cd dist
             git init
-            git config --global user.email "you@example.com"
+            git config --global user.email "nikolay.rusev21@gmail.com"
             git config --global user.name "NikolayR21"
             git add .
             git commit -m "deploying commit"
