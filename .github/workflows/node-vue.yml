@@ -37,5 +37,5 @@ jobs:
             git commit -m 'first commit on master'
             git branch gh-pages
             git checkout gh-pages
-            git remote add origin https://github.com/NikolayR21/nikolayr21.github.io.git
-            git push -f https://NikolayR21:${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/nikolayr21.github.io.git master:gh-pages
+            git remote add origin https://github.com/NikolayR21/dist.git
+            git push -f https://NikolayR21:${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/dist.git master:gh-pages
