@@ -13,5 +13,5 @@ git init
 git add .
 git commit -m "deploying commit"
 
-git push https://${{ secrets.GITHUB_TOKEN }}@github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
+git push -f https://github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
 cd ..
