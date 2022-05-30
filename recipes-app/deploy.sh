@@ -14,7 +14,7 @@ git config --global user.name "NikolayR21"
 #init a repo and commit
 git init
 git add .
-git commit -m "deploying commit"
+git commit -m "deploy (commit: $COMMIT)"
 
-git push -f git@github.com:NikolayR21/web-programming-II-exam.git main:gh-pages
+git push -f https://github.com/NikolayR21/web-programming-II-exam.git master:gh-pages
 cd ..
