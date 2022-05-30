@@ -28,5 +28,4 @@ jobs:
     - run: | 
             cd recipes-app
             npm ci
-            sh deploy.sh
       shell: bash
