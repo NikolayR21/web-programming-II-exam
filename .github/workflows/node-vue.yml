@@ -29,3 +29,4 @@ jobs:
             cd recipes-app
             npm ci
             npm run deploy
+      shell: bash
