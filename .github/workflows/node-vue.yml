@@ -28,4 +28,5 @@ jobs:
     - run: | 
             cd recipes-app
             npm ci
+            npm run test:unit
       shell: bash
