@@ -1,6 +1,6 @@
 module.exports = {
 
-  publicPath: '/web-programming-II-exam/',
+  // publicPath: '/web-programming-II-exam/',
 
   chainWebpack: (config) => {
     const svgRule = config.module.rule("svg");
