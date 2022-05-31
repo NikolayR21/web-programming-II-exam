@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const PORT = 8000;
-const baseURL = `http://127.0.0.1:${PORT}/api`;
+const baseURL = `http://127.0.0.1:${PORT}/api`; //https://heroku-recipes-api.herokuapp.com/
 
 axios.defaults.headers.common["Content-Type"] = "application/json-patch+json";
 
