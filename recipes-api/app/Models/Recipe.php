@@ -10,11 +10,33 @@ class Recipe extends Model
     use HasFactory;
 
     protected $fillable = [
-        
+        'title',
+        'readyTime',
+        'servings',
+        'image',
+        'summary',
+        'steps',
+        'user_id'
     ];
 
     public function ingredients(){
         return $this->belongsToMany(Ingredient::class);
+    }
+
+    public function cuisines(){
+        return $this->belongsToMany(Cuisine::class);
+    }
+
+    public function diets(){
+        return $this->belongsToMany(Diet::class);
+    }
+
+    public function occasions(){
+        return $this->belongsToMany(Occasion::class);
+    }
+
+    public function dish_types(){
+        return $this->belongsToMany(DishType::class);
     }
 
 }
