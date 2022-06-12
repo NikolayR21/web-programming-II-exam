@@ -26,16 +26,17 @@ class OccasionController extends Controller
     public function store(Request $request)
     {
         $fields = $request->validate([
-            'name' => 'string|nullable'
+            'name' => 'string'
         ]);
 
         $fields['name'] = strtolower($fields['name']);
 
-        Occasion::firstOrCreate(
+        $occasion = Occasion::firstOrCreate(
             ['name' => $fields['name']],
             ['name' => $fields['name']]
         );
 
+        return $occasion;
     }
 
     /**

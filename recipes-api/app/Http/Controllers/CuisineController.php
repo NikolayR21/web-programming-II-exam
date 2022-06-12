@@ -14,17 +14,7 @@ class CuisineController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Cuisine::all();
     }
 
     /**
@@ -35,7 +25,18 @@ class CuisineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'string'
+        ]);
+
+        $fields['name'] = strtolower($fields['name']);
+
+        $cuisine = Cuisine::firstOrCreate(
+            ['name' => $fields['name']],
+            ['name' => $fields['name']]
+        );
+
+        return $cuisine;
     }
 
     /**
@@ -44,20 +45,13 @@ class CuisineController extends Controller
      * @param  \App\Models\Cuisine  $cuisine
      * @return \Illuminate\Http\Response
      */
-    public function show(Cuisine $cuisine)
+    public function show($id)
     {
-        //
+        return Cuisine::find($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cuisine  $cuisine
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cuisine $cuisine)
-    {
-        //
+    public function search($name){
+        return Cuisine::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**
@@ -67,9 +61,12 @@ class CuisineController extends Controller
      * @param  \App\Models\Cuisine  $cuisine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cuisine $cuisine)
+    public function update(Request $request, $id)
     {
-        //
+        $cuisine = Cuisine::find($id);
+        $cuisine->update($request->all());
+
+        return $cuisine;
     }
 
     /**
@@ -78,8 +75,8 @@ class CuisineController extends Controller
      * @param  \App\Models\Cuisine  $cuisine
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cuisine $cuisine)
+    public function destroy($id)
     {
-        //
+        return Cuisine::destroy($id);
     }
 }

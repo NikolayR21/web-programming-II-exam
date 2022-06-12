@@ -14,17 +14,7 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Ingredient::all();
     }
 
     /**
@@ -35,7 +25,18 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'string'
+        ]);
+
+        $fields['name'] = strtolower($fields['name']);
+
+        $ingredient = Ingredient::firstOrCreate(
+            ['name' => $fields['name']],
+            ['name' => $fields['name']]
+        );
+
+        return $ingredient;
     }
 
     /**
@@ -44,20 +45,13 @@ class IngredientController extends Controller
      * @param  \App\Models\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function show(Ingredient $ingredient)
+    public function show($id)
     {
-        //
+        return Ingredient::find($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Ingredient  $ingredient
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ingredient $ingredient)
-    {
-        //
+    public function search($name){
+        return Ingredient::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**
@@ -67,9 +61,12 @@ class IngredientController extends Controller
      * @param  \App\Models\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ingredient $ingredient)
+    public function update(Request $request, $id)
     {
-        //
+        $ingredient = Ingredient::find($id);
+        $ingredient->update($request->all());
+
+        return $ingredient;
     }
 
     /**
@@ -78,8 +75,8 @@ class IngredientController extends Controller
      * @param  \App\Models\Ingredient  $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ingredient $ingredient)
+    public function destroy($id)
     {
-        //
+        return Ingredient::destroy($id);
     }
 }

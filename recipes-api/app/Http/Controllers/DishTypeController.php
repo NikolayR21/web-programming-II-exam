@@ -14,17 +14,7 @@ class DishTypeController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return DishType::all();
     }
 
     /**
@@ -35,7 +25,18 @@ class DishTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'string'
+        ]);
+
+        $fields['name'] = strtolower($fields['name']);
+
+        $dishType = DishType::firstOrCreate(
+            ['name' => $fields['name']],
+            ['name' => $fields['name']]
+        );
+
+        return $dishType;
     }
 
     /**
@@ -44,20 +45,13 @@ class DishTypeController extends Controller
      * @param  \App\Models\DishType  $dishType
      * @return \Illuminate\Http\Response
      */
-    public function show(DishType $dishType)
+    public function show($id)
     {
-        //
+        return DishType::find($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\DishType  $dishType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(DishType $dishType)
-    {
-        //
+    public function search($name){
+        return DishType::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**
@@ -67,9 +61,12 @@ class DishTypeController extends Controller
      * @param  \App\Models\DishType  $dishType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DishType $dishType)
+    public function update(Request $request, $id)
     {
-        //
+        $dishType = DishType::find($id);
+        $dishType->update($request->all());
+
+        return $dishType;
     }
 
     /**
@@ -78,8 +75,8 @@ class DishTypeController extends Controller
      * @param  \App\Models\DishType  $dishType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DishType $dishType)
+    public function destroy($id)
     {
-        //
+        return DishType::destroy($id);
     }
 }

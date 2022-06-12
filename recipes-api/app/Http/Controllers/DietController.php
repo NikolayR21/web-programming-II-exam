@@ -14,17 +14,7 @@ class DietController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Diet::all();
     }
 
     /**
@@ -35,7 +25,18 @@ class DietController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'string'
+        ]);
+
+        $fields['name'] = strtolower($fields['name']);
+
+        $diet = Diet::firstOrCreate(
+            ['name' => $fields['name']],
+            ['name' => $fields['name']]
+        );
+
+        return $diet;
     }
 
     /**
@@ -44,20 +45,13 @@ class DietController extends Controller
      * @param  \App\Models\Diet  $diet
      * @return \Illuminate\Http\Response
      */
-    public function show(Diet $diet)
+    public function show($id)
     {
-        //
+        return Diet::find($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Diet  $diet
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Diet $diet)
-    {
-        //
+    public function search($name){
+        return Diet::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**
@@ -67,9 +61,12 @@ class DietController extends Controller
      * @param  \App\Models\Diet  $diet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Diet $diet)
+    public function update(Request $request, $id)
     {
-        //
+        $diet = Diet::find($id);
+        $diet->update($request->all());
+
+        return $diet;
     }
 
     /**
@@ -78,8 +75,8 @@ class DietController extends Controller
      * @param  \App\Models\Diet  $diet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Diet $diet)
+    public function destroy($id)
     {
-        //
+        return Diet::destroy($id);
     }
 }

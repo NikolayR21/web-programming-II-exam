@@ -14,7 +14,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        return Recipe::with('user:firstName,lastName')->get(['id', 'title', 'image','sourceUrl', 'user_id']);
     }
 
     /**

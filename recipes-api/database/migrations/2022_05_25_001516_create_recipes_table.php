@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('title');
+            $table->integer('likes')->default(0);
             $table->integer('readyTime');
             $table->integer('servings');
-            $table->string('image');
+            $table->string('image')->nullable();
+            $table->string('sourceUrl')->nullable();
             $table->text('summary');
+            $table->text('steps');
             $table->timestamps();
         });
     }
