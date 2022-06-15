@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Recipes from '../views/Recipes.vue'
+import ViewRecipe from '../views/ViewRecipe.vue'
 import Shopping from '../views/Shopping.vue'
 import Profile from '../views/Profile.vue'
 import Login from '../views/Login.vue'
@@ -14,7 +15,6 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    //name: 'Home',
     component: Home,
     children: [
       {
@@ -44,6 +44,14 @@ const routes = [
     component: Recipes,
     meta: {
       title: 'Recipes'
+    }
+  },
+  {
+    path: '/recipes/:recipeId',
+    name: 'ViewRecipe',
+    component: ViewRecipe,
+    meta: {
+      title: 'View Recipe'
     }
   },
   {

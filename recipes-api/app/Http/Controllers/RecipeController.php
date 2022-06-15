@@ -14,7 +14,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return Recipe::with('user:firstName,lastName')->get(['id', 'title', 'image','sourceUrl', 'user_id']);
+        return Recipe::with('user:id,firstName,lastName')->get(['id', 'title', 'image','sourceUrl', 'user_id', 'updated_at', 'likes']);
     }
 
     /**
@@ -44,9 +44,11 @@ class RecipeController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show($id)
     {
-        //
+        
+        return Recipe::where('id', $id)->with(['user:id,firstName,lastName', 'ingredients:id,name','occasions:id,name','diets:id,name','dish_types:id,name','cuisines:id,name'])->get();
+        // return $recipe->with(['ingredients','occasions','diets','dish_types','cuisines'])->get();
     }
 
     /**

@@ -31,6 +31,7 @@ export default {
       if(!this.$store.state.user.user && !this.$store.state.user.authenticated)
         this.$store.dispatch('getProfile')
       }
+    this.$store.dispatch('getRecipes')
   },
   methods: {
     checkRoute(){

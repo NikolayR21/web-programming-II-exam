@@ -47,6 +47,7 @@ Route::get('/test', function(){
 
 // *** Recipes ***
 Route::get('/recipes', [RecipeController::class, 'index']);
+Route::get('/recipes/{id}', [RecipeController::class, 'show']);
 
 // *** Diets ***
 Route::get('/diets', [DietController::class, 'index']);
