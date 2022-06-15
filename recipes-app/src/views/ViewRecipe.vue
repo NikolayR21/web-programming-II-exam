@@ -8,7 +8,7 @@
           <i class="fa-solid fa-chevron-left"></i>
         </div>
 
-        <div class="crud">
+        <div v-if="isAuth" class="crud">
           <div class="delete"><i class="fa-solid fa-trash"></i></div>
           <div class="edit"><i class="fa-solid fa-pen-to-square"></i></div>
         </div>
@@ -88,9 +88,15 @@ export default {
       return this.$store.state.recipe.selectedRecipe;
     },
     recipeId() {
-      console.log(this.$route.params.recipeId);
       return this.$route.params.recipeId;
     },
+    user(){
+      const user = this.$store.state.user.user;
+      return user;
+    },
+    isAuth(){
+      return this.$store.state.user.authenticated;
+    }
   },
   mounted() {
     window.scrollTo(0, 0);
