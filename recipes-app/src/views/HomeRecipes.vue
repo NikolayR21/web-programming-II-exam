@@ -7,13 +7,18 @@
         <Loader />
       </li>
       <li class="item" v-for="recipe in recipes" :key="recipe.id">
-        <RecipeCard
-          :image="recipe.image"
-          :title="recipe.title"
-          :source="recipe.sourceUrl"
-          :user="recipe.user"
-          :likes="recipe.likes"
-        />
+        <router-link
+          class="recipe-link"
+          :to="{ name: 'ViewRecipe', params: { recipeId: recipe.id } }"
+        >
+          <RecipeCard
+            :image="recipe.image"
+            :title="recipe.title"
+            :source="recipe.sourceUrl"
+            :user="recipe.user"
+            :likes="recipe.likes"
+          />
+        </router-link>
       </li>
     </ul>
   </div>
@@ -28,7 +33,7 @@ export default {
   name: "HomeRecipes",
   components: {
     RecipeCard,
-    Loader
+    Loader,
   },
   computed: {
     recipes() {
@@ -50,7 +55,12 @@ h2 {
   gap: 1rem;
   justify-content: space-between;
 
-  .loader{
+  .recipe-link {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .loader {
     position: absolute;
     top: 50%;
     left: 50%;

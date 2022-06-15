@@ -41,7 +41,7 @@ export default {
         overflow: hidden;
         }
       p{
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 1;

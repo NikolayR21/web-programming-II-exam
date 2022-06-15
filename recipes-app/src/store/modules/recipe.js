@@ -27,6 +27,9 @@ const actions = {
       state.recipesLoaded = true;
     },
     async getRecipe({commit}, recipeId){
+        if(this.selectedRecipe){
+            commit('updateSelectedRecipe', null)
+        }
         await api.recipe(recipeId).getRecipe()
         .then(res => {
             commit('updateSelectedRecipe', res.data[0])
