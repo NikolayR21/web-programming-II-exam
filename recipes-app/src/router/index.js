@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Recipes from '../views/Recipes.vue'
+import AddRecipe from '../views/AddRecipe.vue'
 import ViewRecipe from '../views/ViewRecipe.vue'
 import Shopping from '../views/Shopping.vue'
 import Profile from '../views/Profile.vue'
@@ -44,6 +45,14 @@ const routes = [
     component: Recipes,
     meta: {
       title: 'Recipes'
+    }
+  },
+  {
+    path: '/recipes/add',
+    name: 'AddRecipe',
+    component: AddRecipe,
+    meta: {
+      title: 'Add a Recipe'
     }
   },
   {

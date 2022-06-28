@@ -5,7 +5,8 @@
       <transition name="slide">
         <router-view />
       </transition>
-      <Navigation v-if="!navigationDisabled"/>
+      <RecipeAddBtn v-if="addRecipeDisabled"/>
+      <Navigation v-if="!navigationDisabled" />
     </div>
   </div>
 </template>
@@ -13,49 +14,72 @@
 <script>
 import AppBarTop from "./components/AppBarTop.vue";
 import Navigation from "./components/Navigation.vue";
+import RecipeAddBtn from "./components/RecipeAddBtn.vue";
 
 export default {
   name: "App",
   components: {
     AppBarTop,
     Navigation,
+    RecipeAddBtn,
   },
-  data(){
-    return{
-      navigationDisabled: null
-    }
+  data() {
+    return {
+      navigationDisabled: null,
+      addRecipeDisabled: null,
+    };
   },
-  created(){
+  created() {
+    this.addRecipe();
     this.checkRoute();
-    if(window.localStorage.getItem('token')){
-      if(!this.$store.state.user.user && !this.$store.state.user.authenticated)
-        this.$store.dispatch('getProfile')
-      }
-    this.$store.dispatch('getRecipes')
+    if (window.localStorage.getItem("token")) {
+      if (!this.$store.state.user.user && !this.$store.state.user.authenticated)
+        this.$store.dispatch("getProfile");
+    }
+    this.$store.dispatch("getRecipes");
+    this.$store.dispatch("getIngredients");
   },
   methods: {
-    checkRoute(){
-      if(this.$route.name === 'Login' ||
-      this.$route.name === 'Register'
-      ){
+    checkRoute() {
+      if (this.$route.name === "Login" || this.$route.name === "Register") {
         this.navigationDisabled = true;
         return;
       }
       this.navigationDisabled = false;
+    },
+    addRecipe() {
+      if (this.isAuth) {
+        if (
+          this.$route.name === "Recipes" ||
+          this.$route.name === "HomeRecipes"
+        ) {
+          this.addRecipeDisabled = true;
+          return;
+        }
+      }
+
+      this.addRecipeDisabled = false;
+      return;
+    },
+  },
+  computed: {
+    isAuth(){
+      return this.$store.state.user.authenticated
     }
   },
   watch: {
-    $route(){
+    $route() {
       this.checkRoute();
-    }
-  }
+      this.addRecipe();
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 
-.overflow-hidden{
+.overflow-hidden {
   overflow: hidden;
 }
 
@@ -68,7 +92,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 6px;
   padding: 1px;
 }
@@ -95,7 +119,7 @@ export default {
     height: 100vh;
   }
 
-  #app{
+  #app {
     overflow: auto;
     width: 375px;
     height: 667px;
@@ -104,6 +128,7 @@ export default {
 
 #app {
   background: #fff;
+  position: relative;
 }
 
 .container {

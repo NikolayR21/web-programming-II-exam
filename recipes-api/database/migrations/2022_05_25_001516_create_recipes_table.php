@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('servings');
             $table->string('image')->nullable();
             $table->string('sourceUrl')->nullable();
-            $table->text('summary');
+            $table->text('summary')->nullable();
             $table->text('steps');
             $table->timestamps();
         });
